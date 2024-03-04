@@ -1,0 +1,70 @@
+﻿@page "/"
+@using Azure.Communication.Identity;
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+<button class="btn btn-primary" @onclick="OnButtonClicked">Click me</button>
+
+@code{
+    IComposite callComposite = new Composite();
+    bool isTeamsCall = false;
+
+    const String groupCallTitle = "Group call ID";
+    const String groupCallEntryPlaceholder = "Enter call ID";
+    const String groupCallSubtitle = "Start a call to get a call ID.";
+
+    const String teamsMeetingTitle = "Teams meeting";
+    const String teamsMeetingEntryPlaceholder = "Enter invite link";
+    const String teamsMeetingSubtitle = "Get link from the meeting invite or anyone in the call.";
+
+    LocalizationProps _localization;
+    DataModelInjectionProps _dataModelInjection;
+    OrientationProps _orientationProps;
+    CallControlProps _callControlProps;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _localization = new LocalizationProps();
+        _localization.locale = "en";
+        _localization.isLeftToRight = true;
+
+        _orientationProps = new OrientationProps();
+        _orientationProps.setupScreenOrientation = "PORTRAIT";
+        _orientationProps.callScreenOrientation = "USER";
+
+        _dataModelInjection = new DataModelInjectionProps();
+        _dataModelInjection.localAvatar = "";
+        _dataModelInjection.remoteAvatar = "";
+
+        _callControlProps = new CallControlProps();
+        _callControlProps.isSkipSetupON = false;
+        _callControlProps.isMicrophoneON = false;
+        _callControlProps.isCameraON = true;
+
+        //groupCallFrame.IsVisible = true;
+        //teamsCallFrame.IsVisible = false;
+    }
+
+    async void OnButtonClicked()
+    {
+        //OnCreateRoom(sender, e);
+        String connectionString = "endpoint=https://rto.unitedstates.communication.azure.com/;accesskey=FtEiGR3YjNYxcey/jgLCztE6+VUPMiceZGFJd1NUfQdYQwzef3G2Jq3hK4/teV40nV19+jGAZ6iSAW6sRLrMmA==";
+        //RoomsClient roomsClient = new RoomsClient(connectionString);
+        CommunicationIdentityClient client = new CommunicationIdentityClient(connectionString);
+        //CommunicationUserIdentifier user = await client.CreateUserAsync();
+        var identityResponse = await client.CreateUserAsync();
+        var identity = identityResponse.Value;
+        var tokenResponse = await client.GetTokenAsync(identity, scopes: new[] { CommunicationTokenScope.VoIP });
+        var token = tokenResponse.Value.Token;
+        //Guid guid = new Guid(rfc4122bytes);
+        if (!String.IsNullOrEmpty(token))
+        {
+            Console.WriteLine("token===========" + token);
+            callComposite.joinCall("Sonu", token, "b2093da5-e408-4bfa-b25b-4e3808582273", false, _localization, _dataModelInjection, _orientationProps, _callControlProps);
+        }
+    }
+
+}
