@@ -28,5 +28,9 @@
     </array>
     <key>XSAppIconAssets</key>
     <string>Assets.xcassets/appicon.appiconset</string>
+    <key>NSCameraUsageDescription</key>
+	<string>Camera is needed</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Mic is needed</string>
 </dict>
 </plist>

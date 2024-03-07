@@ -161,24 +161,24 @@ public partial class SettingsPage : ContentPage
 
     void SetLocalAvatarSelection(string avatarName)
     {
-       localAvatarName = avatarName;
-       localCatBtn.Source = (localAvatarName == "cat.png") ? ImageSource.FromFile("cat_selected.png") : ImageSource.FromFile("cat.png");
-       localFoxBtn.Source = (localAvatarName == "fox.png") ? ImageSource.FromFile("fox_selected.png") : ImageSource.FromFile("fox.png");
-       localKoalaBtn.Source = (localAvatarName == "koala.png") ? ImageSource.FromFile("koala_selected.png") : ImageSource.FromFile("koala.png");
-       localMonkeyBtn.Source = (localAvatarName == "monkey.png") ? ImageSource.FromFile("monkey_selected.png") : ImageSource.FromFile("monkey.png");
-       localMouseBtn.Source = (localAvatarName == "mouse.png") ? ImageSource.FromFile("mouse_selected.png") : ImageSource.FromFile("mouse.png");
-       localOctopusBtn.Source = (localAvatarName == "octopus.png") ? ImageSource.FromFile("octopus_selected.png") : ImageSource.FromFile("octopus.png");
+        localAvatarName = avatarName;
+        localCatBtn.Source = (localAvatarName == "cat.png") ? ImageSource.FromFile("cat_selected.png") : ImageSource.FromFile("cat.png");
+        localFoxBtn.Source = (localAvatarName == "fox.png") ? ImageSource.FromFile("fox_selected.png") : ImageSource.FromFile("fox.png");
+        localKoalaBtn.Source = (localAvatarName == "koala.png") ? ImageSource.FromFile("koala_selected.png") : ImageSource.FromFile("koala.png");
+        localMonkeyBtn.Source = (localAvatarName == "monkey.png") ? ImageSource.FromFile("monkey_selected.png") : ImageSource.FromFile("monkey.png");
+        localMouseBtn.Source = (localAvatarName == "mouse.png") ? ImageSource.FromFile("mouse_selected.png") : ImageSource.FromFile("mouse.png");
+        localOctopusBtn.Source = (localAvatarName == "octopus.png") ? ImageSource.FromFile("octopus_selected.png") : ImageSource.FromFile("octopus.png");
     }
 
     void SetRemoteAvatarSelection(string avatarName)
     {
         remoteAvatarName = avatarName;
-       remoteCatBtn.Source = (remoteAvatarName == "cat.png") ? ImageSource.FromFile("cat_selected.png") : ImageSource.FromFile("cat.png");
-       remoteFoxBtn.Source = (remoteAvatarName == "fox.png") ? ImageSource.FromFile("fox_selected.png") : ImageSource.FromFile("fox.png");
-       remoteKoalaBtn.Source = (remoteAvatarName == "koala.png") ? ImageSource.FromFile("koala_selected.png") : ImageSource.FromFile("koala.png");
-       remoteMonkeyBtn.Source = (remoteAvatarName == "monkey.png") ? ImageSource.FromFile("monkey_selected.png") : ImageSource.FromFile("monkey.png");
-       remoteMouseBtn.Source = (remoteAvatarName == "mouse.png") ? ImageSource.FromFile("mouse_selected.png") : ImageSource.FromFile("mouse.png");
-       remoteOctopusBtn.Source = (remoteAvatarName == "octopus.png") ? ImageSource.FromFile("octopus_selected.png") : ImageSource.FromFile("octopus.png");
+        remoteCatBtn.Source = (remoteAvatarName == "cat.png") ? ImageSource.FromFile("cat_selected.png") : ImageSource.FromFile("cat.png");
+        remoteFoxBtn.Source = (remoteAvatarName == "fox.png") ? ImageSource.FromFile("fox_selected.png") : ImageSource.FromFile("fox.png");
+        remoteKoalaBtn.Source = (remoteAvatarName == "koala.png") ? ImageSource.FromFile("koala_selected.png") : ImageSource.FromFile("koala.png");
+        remoteMonkeyBtn.Source = (remoteAvatarName == "monkey.png") ? ImageSource.FromFile("monkey_selected.png") : ImageSource.FromFile("monkey.png");
+        remoteMouseBtn.Source = (remoteAvatarName == "mouse.png") ? ImageSource.FromFile("mouse_selected.png") : ImageSource.FromFile("mouse.png");
+        remoteOctopusBtn.Source = (remoteAvatarName == "octopus.png") ? ImageSource.FromFile("octopus_selected.png") : ImageSource.FromFile("octopus.png");
     }
 
     void ReloadControl(object sender)

@@ -1,17 +1,18 @@
 ﻿@page "/"
 @using Azure.Communication.Identity;
-@*#if ANDROID*@
-@*@using MauiBlazorNew.Platforms.Android;*@
-@*#elif IOS*@
+
+@*#if ANDROID
+    @using MauiBlazorNew.Platforms.Android;
+    #elif IOS*@
 @using MauiBlazorNew.Platforms.iOS;
+@*@using MauiBlazorNew.Platforms.Android;*@
 @*#endif*@
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
-<button class="btn btn-primary" @onclick="OnButtonClicked">Click me</button>
+<button class="btn btn-primary" @onclick="OnButtonClicked">Join </button>
 
 @code{
     IComposite callComposite = new Composite();
@@ -49,8 +50,6 @@ Welcome to your new app.
         _callControlProps.isMicrophoneON = false;
         _callControlProps.isCameraON = true;
 
-        //groupCallFrame.IsVisible = true;
-        //teamsCallFrame.IsVisible = false;
     }
 
     async void OnButtonClicked()

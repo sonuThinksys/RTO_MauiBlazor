@@ -1,73 +1,47 @@
-﻿@page "/"
-@using Azure.Communication.Identity;
+﻿@page "/fetchdata"
 
-@*#if ANDROID
-    @using MauiBlazorNew.Platforms.Android;
-    #elif IOS*@
-@using MauiBlazorNew.Platforms.iOS;
-@*@using MauiBlazorNew.Platforms.Android;*@
-@*#endif*@
+@using MauiBlazorNew.Data
+@inject WeatherForecastService ForecastService
 
+<h1>Weather forecast</h1>
 
-<h1>Hello, world!</h1>
+<p>This component demonstrates fetching data from a service.</p>
 
-Welcome to your new app.
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Date.ToShortDateString()</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
-<button class="btn btn-primary" @onclick="OnButtonClicked">Join </button>
-
-@code{
-
-    IComposite callComposite = new Composite();
-    bool isTeamsCall = false;
-
-    const String groupCallTitle = "Group call ID";
-    const String groupCallEntryPlaceholder = "Enter call ID";
-    const String groupCallSubtitle = "Start a call to get a call ID.";
-
-    const String teamsMeetingTitle = "Teams meeting";
-    const String teamsMeetingEntryPlaceholder = "Enter invite link";
-    const String teamsMeetingSubtitle = "Get link from the meeting invite or anyone in the call.";
-
-    LocalizationProps _localization;
-    DataModelInjectionProps _dataModelInjection;
-    OrientationProps _orientationProps;
-    CallControlProps _callControlProps;
+@code {
+    private WeatherForecast[] forecasts;
 
     protected override async Task OnInitializedAsync()
     {
-        _localization = new LocalizationProps();
-        _localization.locale = "en";
-        _localization.isLeftToRight = true;
-
-        _orientationProps = new OrientationProps();
-        _orientationProps.setupScreenOrientation = "PORTRAIT";
-        _orientationProps.callScreenOrientation = "USER";
-
-        _dataModelInjection = new DataModelInjectionProps();
-        _dataModelInjection.localAvatar = "";
-        _dataModelInjection.remoteAvatar = "";
-
-        _callControlProps = new CallControlProps();
-        _callControlProps.isSkipSetupON = false;
-        _callControlProps.isMicrophoneON = false;
-        _callControlProps.isCameraON = true;
-
+        forecasts = await ForecastService.GetForecastAsync(DateTime.Now);
     }
-
-    async void OnButtonClicked()
-    {
-        String connectionString = "endpoint=https://rto.unitedstates.communication.azure.com/;accesskey=FtEiGR3YjNYxcey/jgLCztE6+VUPMiceZGFJd1NUfQdYQwzef3G2Jq3hK4/teV40nV19+jGAZ6iSAW6sRLrMmA==";
-        CommunicationIdentityClient client = new CommunicationIdentityClient(connectionString);
-        var identityResponse = await client.CreateUserAsync();
-        var identity = identityResponse.Value;
-        var tokenResponse = await client.GetTokenAsync(identity, scopes: new[] { CommunicationTokenScope.VoIP });
-        var token = tokenResponse.Value.Token;
-        //Guid guid = new Guid(rfc4122bytes);
-        if (!String.IsNullOrEmpty(token))
-        {
-            Console.WriteLine("token===========" + token);
-            callComposite.joinCall("Sonu", token, "b2093da5-e408-4bfa-b25b-4e3808582273", false, _localization, _dataModelInjection, _orientationProps, _callControlProps);
-        }
-    }
-
 }
+
