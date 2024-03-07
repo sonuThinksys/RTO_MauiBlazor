@@ -6,7 +6,7 @@ using Com.Azure.Android.Communication.UI.Calling.Models;
 using Java.Interop;
 using Java.Util;
 
-namespace MauiBlazorNew
+namespace MauiBlazorNew.Platforms.Android
 {
     public class Composite : IComposite
     {

@@ -1,5 +1,10 @@
 ﻿@page "/"
 @using Azure.Communication.Identity;
+@*#if ANDROID*@
+@*@using MauiBlazorNew.Platforms.Android;*@
+@*#elif IOS*@
+@using MauiBlazorNew.Platforms.iOS;
+@*#endif*@
 
 <h1>Hello, world!</h1>
 
@@ -50,11 +55,8 @@ Welcome to your new app.
 
     async void OnButtonClicked()
     {
-        //OnCreateRoom(sender, e);
         String connectionString = "endpoint=https://rto.unitedstates.communication.azure.com/;accesskey=FtEiGR3YjNYxcey/jgLCztE6+VUPMiceZGFJd1NUfQdYQwzef3G2Jq3hK4/teV40nV19+jGAZ6iSAW6sRLrMmA==";
-        //RoomsClient roomsClient = new RoomsClient(connectionString);
         CommunicationIdentityClient client = new CommunicationIdentityClient(connectionString);
-        //CommunicationUserIdentifier user = await client.CreateUserAsync();
         var identityResponse = await client.CreateUserAsync();
         var identity = identityResponse.Value;
         var tokenResponse = await client.GetTokenAsync(identity, scopes: new[] { CommunicationTokenScope.VoIP });
