@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
     <PropertyGroup>
-        <TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>
+        <!--<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>-->
         <TargetFrameworks>net7.0-ios</TargetFrameworks>
         <!--<TargetFrameworks>net7.0-android</TargetFrameworks>-->
         <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
@@ -36,6 +36,9 @@
     <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-ios|AnyCPU'">
       <CreatePackage>false</CreatePackage>
     </PropertyGroup>
+    <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net7.0-android|AnyCPU'">
+      <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
+    </PropertyGroup>
     <ItemGroup>
         <!-- App Icon -->
         <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
@@ -59,6 +62,7 @@
 		<PackageReference Include="Microsoft.Maui.Resizetizer" Version="8.0.7" />
 		<PackageReference Include="Azure.Communication.Common" Version="1.3.0" />
 		<PackageReference Include="Azure.Communication.Identity" Version="1.3.0" />
+		<PackageReference Include="Azure.Communication.CallAutomation" Version="1.1.0" />
     </ItemGroup>
     <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
 		<ProjectReference Include="..\iOSMauiBindings\iOS.CallingUI.Binding\iOS.CallingUI.Binding.csproj" />

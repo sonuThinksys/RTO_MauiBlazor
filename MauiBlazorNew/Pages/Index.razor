@@ -1,18 +1,14 @@
 ﻿@page "/"
 @using Azure.Communication.Identity;
-
-@*#if ANDROID
-    @using MauiBlazorNew.Platforms.Android;
-    #elif IOS*@
+@using Azure.Communication.CallAutomation;
+@using System.Security.Cryptography;
+@using System.Text;
 @using MauiBlazorNew.Platforms.iOS;
 @*@using MauiBlazorNew.Platforms.Android;*@
-@*#endif*@
 
-<h1>Hello, world!</h1>
+<h1>RTO App</h1>
 
-Welcome to your new app.
-
-<button class="btn btn-primary" @onclick="OnButtonClicked">Join </button>
+<button class="btn btn-primary" @onclick="OnButtonClicked">Join Call </button>
 
 @code{
     IComposite callComposite = new Composite();
@@ -52,6 +48,13 @@ Welcome to your new app.
 
     }
 
+    public static Guid ToGuid(long value)
+    {
+        byte[] bytes = new byte[16];
+        BitConverter.GetBytes(value).CopyTo(bytes, 0);
+        return new Guid(bytes);
+    }
+
     async void OnButtonClicked()
     {
         String connectionString = "endpoint=https://rto.unitedstates.communication.azure.com/;accesskey=FtEiGR3YjNYxcey/jgLCztE6+VUPMiceZGFJd1NUfQdYQwzef3G2Jq3hK4/teV40nV19+jGAZ6iSAW6sRLrMmA==";
@@ -60,11 +63,11 @@ Welcome to your new app.
         var identity = identityResponse.Value;
         var tokenResponse = await client.GetTokenAsync(identity, scopes: new[] { CommunicationTokenScope.VoIP });
         var token = tokenResponse.Value.Token;
-        //Guid guid = new Guid(rfc4122bytes);
+        //var guid = new Guid("99428485578377964").ToString();
         if (!String.IsNullOrEmpty(token))
         {
             Console.WriteLine("token===========" + token);
-            callComposite.joinCall("Sonu", token, "b2093da5-e408-4bfa-b25b-4e3808582273", false, _localization, _dataModelInjection, _orientationProps, _callControlProps);
+            callComposite.joinCall("Sonu", token, ToGuid(99428485578377964).ToString(), false, _localization, _dataModelInjection, _orientationProps, _callControlProps);
         }
     }
 
