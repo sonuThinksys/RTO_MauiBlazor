@@ -63,11 +63,11 @@
         var identity = identityResponse.Value;
         var tokenResponse = await client.GetTokenAsync(identity, scopes: new[] { CommunicationTokenScope.VoIP });
         var token = tokenResponse.Value.Token;
-        //var guid = new Guid("99428485578377964").ToString();
+        var callID = ToGuid(99428485578377964).ToString();
         if (!String.IsNullOrEmpty(token))
         {
-            Console.WriteLine("token===========" + token);
-            callComposite.joinCall("Sonu", token, ToGuid(99428485578377964).ToString(), false, _localization, _dataModelInjection, _orientationProps, _callControlProps);
+            Console.WriteLine("token===========" + callID);
+            callComposite.joinCall("Sonu", token, callID, false, _localization, _dataModelInjection, _orientationProps, _callControlProps);
         }
     }
 
