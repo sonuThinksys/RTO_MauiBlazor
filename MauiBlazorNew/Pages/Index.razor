@@ -3,8 +3,10 @@
 @using Azure.Communication.CallAutomation;
 @using System.Security.Cryptography;
 @using System.Text;
-@using MauiBlazorNew.Platforms.iOS;
-@*@using MauiBlazorNew.Platforms.Android;*@
+@*if Platform.iOS
+@using MauiBlazorNew.Platforms.iOS;*@
+@*else*@
+@using MauiBlazorNew.Platforms.Android;
 
 <h1>RTO App</h1>
 
