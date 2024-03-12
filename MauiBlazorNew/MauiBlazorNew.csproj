@@ -2,8 +2,8 @@
 
     <PropertyGroup>
         <!--<TargetFrameworks>net7.0-android;net7.0-ios;net7.0-maccatalyst</TargetFrameworks>-->
-        <TargetFrameworks>net7.0-ios</TargetFrameworks>
-        <!--<TargetFrameworks>net7.0-android</TargetFrameworks>-->
+        <!--<TargetFrameworks>net7.0-ios</TargetFrameworks>-->
+        <TargetFrameworks>net7.0-android</TargetFrameworks>
         <TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net7.0-windows10.0.19041.0</TargetFrameworks>
         <!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
         <!-- <TargetFrameworks>$(TargetFrameworks);net7.0-tizen</TargetFrameworks> -->
@@ -63,6 +63,7 @@
 		<PackageReference Include="Azure.Communication.Common" Version="1.3.0" />
 		<PackageReference Include="Azure.Communication.Identity" Version="1.3.0" />
 		<PackageReference Include="Azure.Communication.CallAutomation" Version="1.1.0" />
+		<PackageReference Include="Microsoft.Toolkit.Mvvm" Version="7.1.2" />
     </ItemGroup>
     <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
 		<ProjectReference Include="..\iOSMauiBindings\iOS.CallingUI.Binding\iOS.CallingUI.Binding.csproj" />

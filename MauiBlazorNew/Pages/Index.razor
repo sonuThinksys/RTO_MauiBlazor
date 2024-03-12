@@ -3,11 +3,11 @@
 @using Azure.Communication.CallAutomation;
 @using System.Security.Cryptography;
 @using System.Text;
-@using MauiBlazorNew.Platforms.iOS;
-@*@using MauiBlazorNew.Platforms.Android;*@
+@*@using MauiBlazorNew.Platforms.iOS;*@
+@using MauiBlazorNew.Platforms.Android;
 
 <h1>RTO App</h1>
-
+<input placeholder="Enter access token" @onchange="HandleChangeTo" />
 <button class="btn btn-primary" @onclick="OnButtonClicked">Join Call </button>
 
 @code{
@@ -26,6 +26,8 @@
     DataModelInjectionProps _dataModelInjection;
     OrientationProps _orientationProps;
     CallControlProps _callControlProps;
+    string tokenValue;
+    string roomID;
 
     protected override async Task OnInitializedAsync()
     {
@@ -63,12 +65,17 @@
         var identity = identityResponse.Value;
         var tokenResponse = await client.GetTokenAsync(identity, scopes: new[] { CommunicationTokenScope.VoIP });
         var token = tokenResponse.Value.Token;
-        var callID = ToGuid(99428485578377964).ToString();
-        if (!String.IsNullOrEmpty(token))
+        var callID = ToGuid(99444609962318363).ToString();
+        if (!String.IsNullOrEmpty(tokenValue))
         {
             Console.WriteLine("token===========" + callID);
             callComposite.joinCall("Sonu", token, callID, false, _localization, _dataModelInjection, _orientationProps, _callControlProps);
         }
+    }
+
+    void HandleChangeTo(ChangeEventArgs e)
+    {
+        tokenValue = e.Value.ToString();
     }
 
 }
