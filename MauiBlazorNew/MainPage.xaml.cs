@@ -1,10 +1,12 @@
 ﻿namespace MauiBlazorNew;
 
+
 public partial class MainPage : ContentPage
 {
 	public MainPage()
 	{
-		InitializeComponent();
+        Console.WriteLine("Started with MainPage");
+        InitializeComponent();
 	}
 }
 

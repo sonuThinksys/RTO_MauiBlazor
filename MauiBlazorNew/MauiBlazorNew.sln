@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Android.CallingUI.Bindings"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOS.CallingUI.Binding", "..\iOSMauiBindings\iOS.CallingUI.Binding\iOS.CallingUI.Binding.csproj", "{D531D930-B6CD-4B54-A63B-808C86593969}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AndroidTestLibrary", "..\AndroidTestLibrary\AndroidTestLibrary.csproj", "{6434FF7B-B77A-4CE0-ADA0-55DAA99A92B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLibrary", "..\TestLibrary\TestLibrary.csproj", "{6A118BBC-5DA2-4F75-9794-D09032509011}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,14 +41,22 @@ Global
 		{CE5E9364-F732-414D-8D39-8C21C77EA93F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE5E9364-F732-414D-8D39-8C21C77EA93F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE5E9364-F732-414D-8D39-8C21C77EA93F}.Release|Any CPU.Build.0 = Release|Any CPU
-        {2C2EDA65-5775-4B66-87B8-8E7C7D32036A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-        {2C2EDA65-5775-4B66-87B8-8E7C7D32036A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-        {2C2EDA65-5775-4B66-87B8-8E7C7D32036A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-        {2C2EDA65-5775-4B66-87B8-8E7C7D32036A}.Release|Any CPU.Build.0 = Release|Any CPU
-        {D531D930-B6CD-4B54-A63B-808C86593969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-        {D531D930-B6CD-4B54-A63B-808C86593969}.Debug|Any CPU.Build.0 = Debug|Any CPU
-        {D531D930-B6CD-4B54-A63B-808C86593969}.Release|Any CPU.ActiveCfg = Release|Any CPU
-        {D531D930-B6CD-4B54-A63B-808C86593969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C2EDA65-5775-4B66-87B8-8E7C7D32036A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C2EDA65-5775-4B66-87B8-8E7C7D32036A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C2EDA65-5775-4B66-87B8-8E7C7D32036A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C2EDA65-5775-4B66-87B8-8E7C7D32036A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D531D930-B6CD-4B54-A63B-808C86593969}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D531D930-B6CD-4B54-A63B-808C86593969}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D531D930-B6CD-4B54-A63B-808C86593969}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D531D930-B6CD-4B54-A63B-808C86593969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6434FF7B-B77A-4CE0-ADA0-55DAA99A92B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6434FF7B-B77A-4CE0-ADA0-55DAA99A92B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6434FF7B-B77A-4CE0-ADA0-55DAA99A92B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6434FF7B-B77A-4CE0-ADA0-55DAA99A92B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A118BBC-5DA2-4F75-9794-D09032509011}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A118BBC-5DA2-4F75-9794-D09032509011}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A118BBC-5DA2-4F75-9794-D09032509011}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A118BBC-5DA2-4F75-9794-D09032509011}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -3,6 +3,7 @@ using Android.Graphics;
 using Com.Azure.Android.Communication.Common;
 using Com.Azure.Android.Communication.UI.Calling;
 using Com.Azure.Android.Communication.UI.Calling.Models;
+using Com.Example.New_library;
 using Java.Interop;
 using Java.Util;
 
@@ -46,6 +47,7 @@ namespace MauiBlazorNew.Platforms.Android
                 personaData.SetAvatarBitmap(avatarBitMap);
                 var displayName = dataModelInjection.Value.localAvatar.Length == 0 ? name : dataModelInjection.Value.localAvatar;
                 personaData.SetDisplayName(displayName);
+                
 
             }
 
@@ -57,6 +59,7 @@ namespace MauiBlazorNew.Platforms.Android
 
 
                 CallCompositeRemoteOptions remoteOptions = new CallCompositeRemoteOptions(locator, credentials, name);
+                
 
 
                 if (personaData != null)
